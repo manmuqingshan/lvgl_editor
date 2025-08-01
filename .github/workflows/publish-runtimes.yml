@@ -37,10 +37,11 @@ jobs:
             - name: Compile the preview runtime
               run: |
                 # compile the project
-                ./lved-cli.js compile .
+                ./lved-cli.js compile examples
 
             - name: Prepare to commit the runtime to branch 'lvgl-previews'
               run: |
+                cd examples
                 git worktree add -f ~/runtimes-branch lvgl-previews
                 CURRENT_BRANCH=$(git branch --show-current)
                 DEST=~/runtimes-branch/branches/${CURRENT_BRANCH}
