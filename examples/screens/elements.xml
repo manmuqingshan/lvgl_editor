@@ -23,7 +23,7 @@
 			style_flex_track_place="center"
 			style_pad_row="#unit_xl"
 		>
-			<alarm />
+			<alarm name="alarm_0" />
 			<thermostat />
 			<move_goal />
 			<weather />

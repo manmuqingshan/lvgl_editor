@@ -73,7 +73,7 @@ lv_obj_t * sliderbox_create(lv_obj_t * parent, const char * title, lv_subject_t 
     lv_label_bind_text(lv_label_1, subject, unit);
     lv_obj_set_style_text_align(lv_label_1, LV_TEXT_ALIGN_CENTER, 0);
     
-    lv_obj_t * round_button_1 = round_button_create(lv_obj_0, "+", subject, 1);
+    round_button_create(lv_obj_0, "+", subject, 1);
     
     lv_obj_t * lv_slider_0 = lv_slider_create(lv_obj_0);
     lv_slider_bind_value(lv_slider_0, subject);

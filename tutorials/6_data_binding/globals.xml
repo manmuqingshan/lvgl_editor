@@ -14,7 +14,6 @@
 	<subjects>
 		<!-- Add <int>, <string>, or <float> subjects here -->
 		<int name="dark_theme" value="0" help="Set dark styles if set to 1" />
-
 		<int name="volume" value="10" />
 		<int name="max_current" value="20" />
 		<int name="timeout" value="90" />

@@ -59,7 +59,7 @@ lv_obj_t * music_player_create(lv_obj_t * parent)
 
     lv_obj_add_style(card_0, &style_panel_light, 0);
     lv_obj_bind_style(card_0, &style_panel_dark, 0, &dark_theme, 1);
-    lv_obj_t * card_header_0 = card_header_create(card_0, "Music player");
+    card_header_create(card_0, "Music player");
     
     lv_obj_t * song_info_cont = row_create(card_0);
     lv_obj_set_name(song_info_cont, "song_info_cont");
@@ -109,7 +109,7 @@ lv_obj_t * music_player_create(lv_obj_t * parent)
     
     lv_obj_t * row_2 = row_create(row_1);
     lv_obj_set_style_flex_cross_place(row_2, LV_FLEX_ALIGN_CENTER, 0);
-    lv_obj_t * icon_button_1 = icon_button_create(row_2, icon_skip_back);
+    icon_button_create(row_2, icon_skip_back);
     
     lv_obj_t * icon_button_2 = icon_button_create(row_2, icon_play);
     lv_obj_bind_flag_if_eq(icon_button_2, &song_playing, LV_OBJ_FLAG_HIDDEN, 1);
@@ -119,7 +119,7 @@ lv_obj_t * music_player_create(lv_obj_t * parent)
     lv_obj_bind_flag_if_eq(icon_button_3, &song_playing, LV_OBJ_FLAG_HIDDEN, 0);
     lv_obj_add_subject_set_int_event(icon_button_3, &song_playing, LV_EVENT_CLICKED, 0);
     
-    lv_obj_t * icon_button_4 = icon_button_create(row_2, icon_skip_forward);
+    icon_button_create(row_2, icon_skip_forward);
     
     lv_obj_t * icon_button_5 = icon_button_create(row_1, icon_volume_max);
     lv_obj_set_style_pad_all(icon_button_5, 8, 0);

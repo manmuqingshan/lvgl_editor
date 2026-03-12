@@ -89,12 +89,12 @@ lv_obj_t * weather_create(lv_obj_t * parent)
     lv_obj_t * lv_tabview_tab_0 = lv_tabview_add_tab(lv_tabview_0, "Sidney");
     lv_obj_set_style_bg_image_src(lv_tabview_0, weather_location_1_bg, 0);
     lv_obj_add_style(lv_tabview_tab_0, &style_tab, 0);
-    lv_obj_t * location_0 = location_create(lv_tabview_tab_0, "Sidney", &location1_temp, icon_cloudy, "Cloudy");
+    location_create(lv_tabview_tab_0, "Sidney", &location1_temp, icon_cloudy, "Cloudy");
     
     lv_obj_t * lv_tabview_tab_1 = lv_tabview_add_tab(lv_tabview_0, "Budapest");
     lv_obj_set_style_bg_image_src(lv_tabview_0, weather_location_2_bg, 0);
     lv_obj_add_style(lv_tabview_tab_1, &style_tab, 0);
-    lv_obj_t * location_1 = location_create(lv_tabview_tab_1, "Budapest, HU", &location2_temp, icon_sunny, "Sunny");
+    location_create(lv_tabview_tab_1, "Budapest, HU", &location2_temp, icon_sunny, "Sunny");
     
     lv_obj_t * lv_tabview_tab_bar_0 = lv_tabview_get_tab_bar(lv_tabview_0);
     lv_obj_set_height(lv_tabview_0, 44);

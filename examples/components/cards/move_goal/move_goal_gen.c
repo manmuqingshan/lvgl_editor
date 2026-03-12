@@ -51,19 +51,19 @@ lv_obj_t * move_goal_create(lv_obj_t * parent)
     lv_obj_set_height(row_0, 90);
     lv_obj_set_width(row_0, lv_pct(100));
     lv_obj_set_style_flex_main_place(row_0, LV_FLEX_ALIGN_SPACE_BETWEEN, 0);
-    lv_obj_t * stat_col_0 = stat_col_create(row_0, 8500, "Mon");
+    stat_col_create(row_0, 8500, "Mon");
     
-    lv_obj_t * stat_col_1 = stat_col_create(row_0, 4000, "Tue");
+    stat_col_create(row_0, 4000, "Tue");
     
-    lv_obj_t * stat_col_2 = stat_col_create(row_0, 6700, "Wed");
+    stat_col_create(row_0, 6700, "Wed");
     
-    lv_obj_t * stat_col_3 = stat_col_create(row_0, 4300, "Thu");
+    stat_col_create(row_0, 4300, "Thu");
     
-    lv_obj_t * stat_col_4 = stat_col_create(row_0, 1000, "Fri");
+    stat_col_create(row_0, 1000, "Fri");
     
-    lv_obj_t * stat_col_5 = stat_col_create(row_0, 0, "Sat");
+    stat_col_create(row_0, 0, "Sat");
     
-    lv_obj_t * stat_col_6 = stat_col_create(row_0, 0, "Sun");
+    stat_col_create(row_0, 0, "Sun");
     
     lv_obj_t * goal_current = div_create(row_0);
     lv_obj_set_name(goal_current, "goal_current");

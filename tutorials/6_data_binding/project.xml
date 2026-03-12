@@ -1,7 +1,7 @@
 <project name="ui_data_binding">
 	<targets>
 		<target name="target1">
-			<display width="320" height="240" />
+			<display width="1200" height="680" />
 		</target>
 	</targets>
 </project>
