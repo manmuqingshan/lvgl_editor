@@ -1,7 +1,6 @@
 {
   "title": "Tools",
   "pages": [
-    "index",
     "cli",
     "online-share",
     "figma-integration"

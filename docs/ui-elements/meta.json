@@ -1,7 +1,6 @@
 {
   "title": "UI Elements",
   "pages": [
-    "index",
     "components",
     "widgets",
     "screens",

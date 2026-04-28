@@ -1,7 +1,6 @@
 {
   "title": "Integration",
   "pages": [
-    "index",
     "using-exported-c-code",
     "loading-xml-files",
     "renesas",

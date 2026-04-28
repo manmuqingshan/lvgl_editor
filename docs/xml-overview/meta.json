@@ -1,7 +1,6 @@
 {
   "title": "XML Overview",
   "pages": [
-    "index",
     "overview",
     "syntax",
     "xml-license"
