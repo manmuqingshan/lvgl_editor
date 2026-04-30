@@ -7,17 +7,35 @@ Apply visual styling to your UI components through style sheets, local styles, a
 
 ## Overview
 
-In XML files, both style sheets (`lv_style_t`) and local styles can be used.
+In Components, Widgets, and Screens, both style sheets (`lv_style_t`) and local styles can be used.
 
 ## Style Sheets
 
-In the `styles` section, styles and their properties can be defined like this:
+### Simple Usage 
+
+In the `<styles>` section, styles and their properties can be defined. The styles later can be assigned to Components, Widgets, or Screens. 
+
+The `<styles>` can be defined in the UI elements' XML file, or in `globals.xml`. 
+
+It looks like this in the practice
 
 ```xml
-<style name="red"
- help="What is this style about?"
- border_width="2px"
- border_color="0xff0000"/>
+<component> <!-- Could be <widget> or <screen> too -->
+<styles>
+    <style name="style_red"
+           help="Red border"
+           border_width="2px"
+           border_color="0xff0000"/>
+
+    <style name="style_blue_bg"
+           help="Blue background"
+           bg_opa="50%"
+           bg_color="0x00f"/>
+
+    <style name="style_large_text"
+           help="Big blue text"/>
+</styles>
+</component>
 ```
 
 Styles can be referenced in the `view` like this:
@@ -25,22 +43,28 @@ Styles can be referenced in the `view` like this:
 ```xml
 <view>
  <lv_slider value="20">
-  <style name="main"/>
-  <style name="red" selector="knob"/>
-  <style name="blue" selector="knob|focused"/>
+  <style name="style_red"/>
+  <style name="style_blue_bg" selector="knob"/>
+  <style name="style_blue_bg" selector="knob|focused"/>
  </lv_slider>
 </view>
 ```
 
 As shown in the example, parts and states can be set using `selector`.
 
+<Callout>
+    It's recommended to prefix style names with `style_` to avoid name collisions.
+</Callout>
+
 ## Style Binding
 
 Instead of directly adding styles to UI elements, you can add them conditionally when a subject's value equals a reference value. This enables dynamic styling at runtime, allowing you to change appearance or layout based on conditions.
 
+See [Data-bindings](./data-binding) for more information.
+
 A typical use case is light/dark theme switching, which requires:
 
-- A subject such as `dark_theme_on`
+- A subject such as `subject_dark_theme_on`
 - Default styles added normally with the `style` tag
 - Dark styles with the required color adjustments
 
@@ -50,18 +74,20 @@ Here is an example:
 <component>
  <styles>
   <style name="style_base" bg_color="0xeee" text_color="0x111" radius="20" />
-  <style name="style_dark" bg_color="0x333" text_color="0xeee" radius="20" />
+  <style name="style_dark" bg_color="0x333" text_color="0xeee" />
  </styles>
 
  <view extends="lv_button">
   <style name="style_base" />
-  <bind_style name="style_dark" subject="dark_theme_on" ref_value="1"/>
+  <bind_style name="style_dark" subject="subject_dark_theme_on" ref_value="1"/>
   <lv_label text="Apply"/>
  </view>
 </component>
 ```
 
 ## Local Styles
+
+### Simple Usage 
 
 Local styles can be used directly on individual elements:
 
@@ -75,7 +101,7 @@ Selectors are also supported for local style properties:
 <lv_slider style_bg_opa-indicator-pressed="200"/>
 ```
 
-## Local Style Binding
+### Local Style Binding
 
 Instead of setting local style properties directly, you can bind them to subject values for dynamic behavior:
 
@@ -87,7 +113,65 @@ Instead of setting local style properties directly, you can bind them to subject
 </component>
 ```
 
+## Relation to Constants
+
+In the values of style properties constants can be used as well.
+
+```xml
+<component>
+    <constants>
+        <int name="thin" value="2" help="Thin border"/>
+        <color name="dark" value="0x333" help="A dark color for the button's background"/>
+    </constants>
+
+    <styles>
+        <!-- Global constants can be used as well, e.g. #muted below  --> 
+        <style name="style_main" border_width="#thin" bg_color="#dark" bg_opa="#muted"/>
+    </styles>
+</component>
+```
+
+
+## Relation to API Properties
+
+Since styles are initialized only once, it's not possible to pass API properties to them when the instances ar created. So this is invalid:
+
+```xml
+<component>
+    <api> 
+        <prop name="thickness" type="int"/>
+    </api>
+
+    <styles>
+       <!-- ❌ CAN'T DO THIS -->
+       <style name="style_main" border_width="$thickness"/>
+    </styles>
+    
+</component>
+```
+
+However you can pass [`<api>`](./api) properties to local style properties:
+
+```xml
+<component>
+    <api> 
+        <prop name="thickness" type="int"/>
+        <prop name="bg_color" type="color"/>
+    </api>
+
+    <view style_bg_color="$bg_color">
+       <!-- ✅ Passing api properties to local styles work -->
+       <lv_slider style_border_width-knob="$thickness"/>
+    </view>
+</component>
+```
+
 ## Gradients
+
+<Callout>
+Gradients are not yet supported in the UI Editor preview, but they can be used in exported and runtime code.
+</Callout>
+
 
 Before the `styles` tag, the `gradients` tag can be used to define various gradients that can later be referenced in your styles.
 

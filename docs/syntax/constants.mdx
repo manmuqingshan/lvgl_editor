@@ -9,6 +9,7 @@ Constants allow you to define reusable values that can be referenced throughout 
 
 Constants can be defined to replace any value with a selected type or to be used as special values. The supported types are:
 
+- `int` - 32bit integers
 - `color` - Color values (e.g., `0xff0000`)
 - `px` - Pixel measurements
 - `percentage` - Percentage values
@@ -44,9 +45,20 @@ Constants can be used in:
 Constant values are referenced using the `#` symbol followed by the constant name. For example:
 
 ```xml
-<styles>
-  <style name="style1" bg_color="#color1"/>
-</styles>
-```
+<components>
+  <consts>
+    <color name="red" value="0xff0000" help="A pure red color"/>
+    <int name="long" value="200" help="Just large number"/>
+    <string name="greeting" value="Hi There!" help="Just be nice"/>
+  </consts>
+  
+  <styles>
+    <style name="style_1" bg_color="#red"/>
+  </styles>
 
-This references the `color1` constant defined above, making your styles more maintainable and easier to update globally.
+  <view width="#long">
+    <style name="style_1"/>
+    <lv_label text="#greeting"/>
+  </view>
+</components>
+```

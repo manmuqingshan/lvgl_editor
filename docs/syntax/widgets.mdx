@@ -100,33 +100,6 @@ static lv_label_long_mode_t long_mode_text_to_enum(const char * txt)
 
 The key pattern is using `if(lv_streq("property", name)) lv_function_set(obj, value);` to map any XML attribute to its corresponding C function call.
 
-### Registering a Parser
-
-Register a Widget parser using the `lv_xml_register_widget()` function:
-
-```c
-lv_xml_register_widget("lv_label", lv_xml_label_create, lv_xml_label_apply);
-```
-
-Once registered, the widget can be instantiated from C code:
-
-```c
-const char * attrs[] = {
-  "text", "Click here",
-  "align", "center",
-  NULL, NULL,
-};
-
-lv_obj_t * label = lv_xml_create(lv_screen_active(), "lv_label", attrs);
-```
-
-And in XML, it becomes immediately usable:
-
-```xml
-<view>
-  <lv_label width="100" text="I'm a label!" wrap="scroll"/>
-</view>
-```
 
 ## Creating Widgets in LVGL Pro Editor
 
