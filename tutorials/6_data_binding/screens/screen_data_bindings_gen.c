@@ -47,9 +47,9 @@ lv_obj_t * screen_data_bindings_create(void)
     lv_obj_set_flex_flow(lv_obj_0, LV_FLEX_FLOW_COLUMN);
 
     sliderbox_create(lv_obj_0, "Max. current", &max_current, "%d mA");
-    
+
     sliderbox_create(lv_obj_0, "Timeout", &timeout, "%d ms");
-    
+
     sliderbox_create(lv_obj_0, "Volume", &volume, "%d%%");
 
     LV_TRACE_OBJ_CREATE("finished");

@@ -66,7 +66,7 @@ lv_obj_t * stat_col_create(lv_obj_t * parent, int32_t move, const char * day)
     lv_bar_set_max_value(bar_0, 10000);
     lv_bar_set_value(bar_0, move, false);
     lv_obj_add_style(bar_0, &style_bar, 0);
-    
+
     lv_obj_t * lv_label_0 = lv_label_create(column_0);
     lv_label_set_text(lv_label_0, day);
     lv_obj_set_style_text_font(lv_label_0, geist_semibold_12, 0);

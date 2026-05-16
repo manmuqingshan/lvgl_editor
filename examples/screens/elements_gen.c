@@ -63,10 +63,10 @@ lv_obj_t * elements_create(void)
     lv_obj_bind_style(row_0, &style_dark, 0, &dark_theme, 1);
     lv_obj_t * theme_switcher_0 = theme_switcher_create(row_0);
     lv_obj_set_flex_grow(theme_switcher_0, 1);
-    
+
     lv_obj_t * button_0 = button_create(row_0, "Play Animation");
     lv_obj_set_width(button_0, LV_SIZE_CONTENT);
-    
+
     lv_obj_t * div_0 = div_create(lv_obj_0);
     lv_obj_set_flex_grow(div_0, 1);
     lv_obj_set_scroll_snap_y(div_0, LV_SCROLL_SNAP_CENTER);
@@ -75,17 +75,17 @@ lv_obj_t * elements_create(void)
     lv_obj_set_style_pad_row(div_0, UNIT_XL, 0);
     lv_obj_t * alarm_0 = alarm_create(div_0);
     lv_obj_set_name(alarm_0, "alarm_0");
-    
+
     thermostat_create(div_0);
-    
+
     move_goal_create(div_0);
-    
+
     weather_create(div_0);
-    
+
     light_temperature_create(div_0);
-    
+
     music_player_create(div_0);
-    
+
     speaker_volume_create(div_0);
 
     lv_obj_add_play_timeline_event(button_0, LV_EVENT_CLICKED, alarm_get_timeline(alarm_0, ALARM_TIMELINE_OPEN), 0, false);

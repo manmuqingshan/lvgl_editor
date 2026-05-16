@@ -49,13 +49,13 @@ lv_obj_t * screen_translations_create(void)
 
     lv_obj_t * lv_label_0 = lv_label_create(lv_obj_0);
     lv_label_set_translation_tag(lv_label_0, "dog");
-    
+
     lv_obj_t * lv_label_1 = lv_label_create(lv_obj_0);
     lv_label_set_translation_tag(lv_label_1, "cat");
-    
+
     lv_obj_t * lv_label_2 = lv_label_create(lv_obj_0);
     lv_label_set_translation_tag(lv_label_2, "house");
-    
+
     lv_obj_t * lv_label_3 = lv_label_create(lv_obj_0);
     lv_label_set_translation_tag(lv_label_3, "person");
 

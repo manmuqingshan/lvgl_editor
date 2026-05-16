@@ -77,7 +77,7 @@ lv_obj_t * light_temperature_create(lv_obj_t * parent)
     lv_obj_t * card_header_0 = card_header_create(card_0, "Light temperature");
     lv_obj_t * switch_0 = switch_create(card_header_0);
     lv_obj_bind_checked(switch_0, &light_temperature);
-    
+
     lv_obj_t * lv_arc_0 = lv_arc_create(card_0);
     lv_arc_bind_value(lv_arc_0, &light_temperature_temp);
     lv_arc_set_min_value(lv_arc_0, 2000);
@@ -100,7 +100,7 @@ lv_obj_t * light_temperature_create(lv_obj_t * parent)
     lv_label_bind_text(lv_label_0, &light_temperature_temp, "%dK");
     lv_obj_set_style_text_font(lv_label_0, geist_semibold_28, 0);
     lv_obj_set_style_text_letter_space(lv_label_0, -1, 0);
-    
+
     lv_obj_t * lv_label_1 = lv_label_create(column_0);
     lv_label_set_text(lv_label_1, "Dining room");
     lv_obj_set_style_text_font(lv_label_1, geist_semibold_12, 0);

@@ -103,7 +103,7 @@ lv_obj_t * thermostat_create(lv_obj_t * parent)
     lv_obj_t * card_header_0 = card_header_create(card_0, "Thermostat");
     lv_obj_t * switch_0 = switch_create(card_header_0);
     lv_obj_bind_checked(switch_0, &thermostat_on);
-    
+
     lv_obj_t * div_0 = div_create(card_0);
     lv_obj_set_style_layout(div_0, LV_LAYOUT_NONE, 0);
     lv_obj_set_style_pad_ver(div_0, 12, 0);
@@ -117,7 +117,7 @@ lv_obj_t * thermostat_create(lv_obj_t * parent)
     lv_label_bind_text(lv_label_0, &room_temp, "%d °C");
     lv_obj_set_style_text_font(lv_label_0, geist_semibold_28, 0);
     lv_obj_set_align(lv_label_0, LV_ALIGN_CENTER);
-    
+
     lv_obj_t * thermostat_scale_light = lv_scale_create(div_0);
     lv_obj_set_name(thermostat_scale_light, "thermostat_scale_light");
     lv_obj_set_align(thermostat_scale_light, LV_ALIGN_CENTER);
@@ -138,7 +138,7 @@ lv_obj_t * thermostat_create(lv_obj_t * parent)
     lv_scale_bind_section_max_value(thermostat_scale_light, lv_scale_section_0, &thermostat_temp);
     lv_scale_set_section_style_items(thermostat_scale_light, lv_scale_section_0, &style_scale_section_ticks);
     lv_scale_set_section_style_indicator(thermostat_scale_light, lv_scale_section_0, &style_scale_section_ticks);
-    
+
     lv_obj_t * lv_arc_0 = lv_arc_create(div_0);
     lv_obj_set_width(lv_arc_0, 120);
     lv_obj_set_height(lv_arc_0, 120);
@@ -154,7 +154,7 @@ lv_obj_t * thermostat_create(lv_obj_t * parent)
     lv_obj_add_style(lv_arc_0, &style_arc_no_line, LV_PART_MAIN);
     lv_obj_add_style(lv_arc_0, &style_arc_no_line, LV_PART_INDICATOR);
     lv_obj_add_style(lv_arc_0, &style_arc_knob, LV_PART_KNOB);
-    
+
     lv_obj_t * div_1 = div_create(card_0);
     lv_obj_set_style_flex_track_place(div_1, LV_FLEX_ALIGN_CENTER, 0);
     lv_obj_set_style_margin_top(div_1, -12, 0);
