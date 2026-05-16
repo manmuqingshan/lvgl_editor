@@ -64,17 +64,17 @@ lv_obj_t * sliderbox_create(lv_obj_t * parent, const char * title, lv_subject_t 
     lv_label_set_text(lv_label_0, title);
     lv_obj_set_width(lv_label_0, lv_pct(100));
     lv_obj_set_style_text_align(lv_label_0, LV_TEXT_ALIGN_CENTER, 0);
-    
+
     lv_obj_t * round_button_0 = round_button_create(lv_obj_0, "-", subject, -1);
     lv_obj_set_flag(round_button_0, LV_OBJ_FLAG_FLEX_IN_NEW_TRACK, true);
-    
+
     lv_obj_t * lv_label_1 = lv_label_create(lv_obj_0);
     lv_obj_set_flex_grow(lv_label_1, 1);
     lv_label_bind_text(lv_label_1, subject, unit);
     lv_obj_set_style_text_align(lv_label_1, LV_TEXT_ALIGN_CENTER, 0);
-    
+
     round_button_create(lv_obj_0, "+", subject, 1);
-    
+
     lv_obj_t * lv_slider_0 = lv_slider_create(lv_obj_0);
     lv_slider_bind_value(lv_slider_0, subject);
     lv_obj_set_flag(lv_slider_0, LV_OBJ_FLAG_FLEX_IN_NEW_TRACK, true);

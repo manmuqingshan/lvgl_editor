@@ -46,7 +46,7 @@ lv_obj_t * round_button_create(lv_obj_t * parent, const char * text, lv_subject_
     lv_obj_t * lv_label_0 = lv_label_create(lv_button_0);
     lv_label_set_text(lv_label_0, text);
     lv_obj_set_align(lv_label_0, LV_ALIGN_CENTER);
-    
+
     lv_subject_increment_dsc_t * subject_increment_event_0 = lv_obj_add_subject_increment_event(lv_button_0, subject, LV_EVENT_PRESSED, step);
     lv_subject_increment_dsc_t * subject_increment_event_1 = lv_obj_add_subject_increment_event(lv_button_0, subject, LV_EVENT_LONG_PRESSED_REPEAT, step);
 

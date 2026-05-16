@@ -74,7 +74,7 @@ lv_obj_t * alarm_create(lv_obj_t * parent)
     lv_obj_set_name(header, "header");
     lv_obj_t * switch_0 = switch_create(header);
     lv_obj_bind_checked(switch_0, &alarm_on);
-    
+
     lv_obj_t * div_0 = div_create(card_0);
     lv_obj_set_flex_flow(div_0, LV_FLEX_FLOW_ROW);
     lv_obj_set_style_flex_main_place(div_0, LV_FLEX_ALIGN_SPACE_BETWEEN, 0);
@@ -83,16 +83,16 @@ lv_obj_t * alarm_create(lv_obj_t * parent)
     lv_obj_t * roller_0 = roller_create(div_0, &alarm_on);
     lv_roller_set_options(roller_0, HOURS_STRING, LV_ROLLER_MODE_NORMAL);
     lv_roller_bind_value(roller_0, &alarm_hour);
-    
+
     lv_obj_t * lv_label_0 = lv_label_create(div_0);
     lv_label_set_text(lv_label_0, ":");
     lv_obj_set_style_text_font(lv_label_0, geist_light_60, 0);
     lv_obj_bind_style(lv_label_0, &style_disabled, 0, &alarm_on, 0);
-    
+
     lv_obj_t * roller_1 = roller_create(div_0, &alarm_on);
     lv_roller_set_options(roller_1, MINS_STRING, LV_ROLLER_MODE_NORMAL);
     lv_roller_bind_value(roller_1, &alarm_min);
-    
+
     lv_obj_t * div_1 = div_create(card_0);
     lv_obj_set_flex_flow(div_1, LV_FLEX_FLOW_COLUMN);
     lv_obj_add_style(div_1, &settings, 0);
@@ -107,11 +107,11 @@ lv_obj_t * alarm_create(lv_obj_t * parent)
     lv_obj_t * lv_label_1 = lv_label_create(div_2);
     lv_label_set_text(lv_label_1, "Sound");
     lv_obj_set_style_text_font(lv_label_1, geist_semibold_14, 0);
-    
+
     lv_obj_t * lv_label_2 = lv_label_create(div_2);
     lv_label_set_text(lv_label_2, "Seedling");
     lv_obj_set_style_text_font(lv_label_2, geist_regular_14, 0);
-    
+
     lv_obj_t * div_3 = div_create(div_1);
     lv_obj_set_flex_flow(div_3, LV_FLEX_FLOW_ROW);
     lv_obj_set_style_flex_main_place(div_3, LV_FLEX_ALIGN_SPACE_BETWEEN, 0);
@@ -120,12 +120,12 @@ lv_obj_t * alarm_create(lv_obj_t * parent)
     lv_obj_t * lv_label_3 = lv_label_create(div_3);
     lv_label_set_text(lv_label_3, "Snooze duration");
     lv_obj_set_style_text_font(lv_label_3, geist_semibold_14, 0);
-    
+
     lv_obj_t * lv_label_4 = lv_label_create(div_3);
     lv_label_set_text(lv_label_4, "10min");
     lv_obj_set_style_text_font(lv_label_4, geist_regular_14, 0);
-    
-    
+
+
     /* create animation timeline(s) */
     lv_anim_timeline_t ** at_array = lv_malloc(sizeof(lv_anim_timeline_t *) * _ALARM_TIMELINE_CNT);
     at_array[ALARM_TIMELINE_OPEN] = timeline_open_create(card_0);

@@ -50,20 +50,20 @@ lv_obj_t * screen_components_create(void)
 
     lv_obj_t * section_0 = section_create(lv_obj_0);
     lv_label_set_text(section_0, "Normal buttons");
-    
-    lv_obj_t * button_normal_0 = button_normal_create(lv_obj_0, "Click me");
-    
-    lv_obj_t * button_normal_1 = button_normal_create(lv_obj_0, "Custom text");
-    
+
+    button_normal_create(lv_obj_0, "Click me");
+
+    button_normal_create(lv_obj_0, "Custom text");
+
     lv_obj_t * button_normal_2 = button_normal_create(lv_obj_0, "Full width");
     lv_obj_set_width(button_normal_2, lv_pct(100));
-    
+
     lv_obj_t * section_1 = section_create(lv_obj_0);
     lv_label_set_text(section_1, "Warning buttons");
-    
-    lv_obj_t * button_warning_0 = button_warning_create(lv_obj_0, "Warning!");
-    
-    lv_obj_t * button_warning_1 = button_warning_create(lv_obj_0, "Upps!");
+
+    button_warning_create(lv_obj_0, "Warning!");
+
+    button_warning_create(lv_obj_0, "Upps!");
 
     LV_TRACE_OBJ_CREATE("finished");
 

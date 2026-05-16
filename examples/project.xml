@@ -1,4 +1,4 @@
-<project name="examples">
+<project name="examples" lvgl_version="9.5.0">
 	<targets>
 		<target name="full_view">
 			<display width="480" height="480" />
