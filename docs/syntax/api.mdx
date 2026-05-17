@@ -57,6 +57,9 @@ Slots are available only for components. For widgets, the more powerful elements
 
 Slots are very useful for creating components like screen templates where users are allowed to create children on certain internal UI elements.
 
+It's also possible to change the basic `lv_obj` properties on the slots, such as `hidden="true"`, `style_bg_color-pressed="0xff0000"`, `checked="true"`, `width="100"`, etc.
+
+
 #### Slots Example
 
 ```xml
@@ -75,13 +78,20 @@ Slots are very useful for creating components like screen templates where users 
 
 <!-- main_screen.xml -->
 <component>
+  <styles>
+    <styles name="style_thin_border" border_width="1" border_color="0x800"/>
+  </styles>
   <view extends="simple_screen" width="100%">
-    <simple_screen-icon_area>
+
+    <!-- Add some children to the slot and also change some basic properties -->
+    <simple_screen-icon_area style_bg_color="0x333" height="content">
       <lv_image src="img1"/>
       <lv_image src="img2"/>
     </simple_screen-icon_area>
 
+    <!-- Besides a label add a child too -->
     <simple_screen-content_area>
+      <style name="style_thin_border"/>
       <lv_label text="Some content"/>
     </simple_screen-content_area>
   </view>
