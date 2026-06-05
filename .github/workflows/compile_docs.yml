@@ -14,7 +14,6 @@ on:
     paths:
       - 'docs/**'
       - 'examples/**'
-      - 'scripts/build_html_examples.sh'
       - '.github/workflows/compile_docs.yml'
   push:
     branches:
@@ -25,7 +24,6 @@ on:
       - 'src/**'
       - 'examples/**'
       - 'demos/**'
-      - 'scripts/build_html_examples.sh'
       - '.github/workflows/compile_docs.yml'
 
 # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#concurrency
@@ -65,26 +63,13 @@ jobs:
 
       - name: Build examples (with cache)
         run: |
-          # Grab the current name in case the LVGL folder is not called lvgl
-          # as it could be the case if this is running from a fork
-          LVGL_EDITOR_FOLDER=$(pwd)
-          # Move to the parent folder to fetch emscripten port.
           cd ..
-          ./lvgl_editor/scripts/build_html_examples.sh --symlink $LVGL_EDITOR_FOLDER
+          ./lvgl_editor/docs/scripts/build_html_examples.sh
 
-      - name: Install Example Documentation
-        run: npm i @lvgl/examples-generator
-
-      - name: Check Example Documentation
-        run: |
-            npx -p @lvgl/examples-generator lvgl-examples-check-about --src examples
-            npx -p @lvgl/examples-generator lvgl-examples-check-examples --src examples
-
-      - name: Generate Example Documentation
-        run: |
-            npx -p @lvgl/examples-generator lvgl-examples-gen \
-            --src examples \
-            --out docs/src/examples
+      - name: Setup Node        
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install mdx linter
         run: npm i @lvgl/mdx-lint
@@ -98,7 +83,7 @@ jobs:
       - name: Convert xml files to md
         run: |
             mkdir -p /tmp/xml
-            python3 docs/xml_to_md.py examples /tmp/xml --source-base https://github.com/lvgl/lvgl/blob/${{ github.sha }}/examples
+            python3 docs/scripts/xml_to_md.py examples /tmp/xml --source-base https://github.com/lvgl/lvgl/blob/${{ github.sha }}/examples
      
       - name: Deploy Latest
         if: >
@@ -114,9 +99,9 @@ jobs:
           mkdir -p /tmp/pro-docs-latest/xml/latest
 
           cp -r docs/. /tmp/pro-docs-latest/latest/
-          cp -r /tmp/xml/. /tmp/open-docs-latest/xml/latest
+          cp -r /tmp/xml/. /tmp/pro-docs-latest/xml/latest
 
-          cd /tmp/open-docs-latest
+          cd /tmp/pro-docs-latest
           git config user.name lvgl-bot
           git config user.email lvgl-bot@users.noreply.github.com
           git add .
