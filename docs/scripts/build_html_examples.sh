@@ -30,7 +30,7 @@ echo ---------------------
 
 # Replace the lvgl examples with the lvgl_editor exmamples so that emscripten will build them
 rm -r $LVGL_PATH/examples
-cp -r $PROJ_PATH/examples $LVGL_PATH
+cp -r $PROJ_PATH/docs/examples $LVGL_PATH
 EXAMPLE_LIST_C=$EMSCRIPTEN_BUILDER_PATH/examplelist.c
 $STARTER_PATH/lvgl_editor/docs/scripts/genexamplelist.sh > $EXAMPLE_LIST_C
 cat $EXAMPLE_LIST_C
