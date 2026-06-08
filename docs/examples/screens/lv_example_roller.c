@@ -18,6 +18,8 @@ void lv_example_roller(void)
     static lv_style_t style_roller;
     static lv_style_t style_roller_sel;
 
+    static lv_subject_t subject_index;
+
     static bool inited = false;
 
     if (!inited) {
@@ -32,6 +34,7 @@ void lv_example_roller(void)
         lv_style_set_bg_color(&style_roller_sel, lv_color_hex(0x3b82f6));
         lv_style_set_text_color(&style_roller_sel, lv_color_hex(0xffffff));
 
+        lv_subject_init_int(&subject_index, 0);
         inited = true;
     }
 

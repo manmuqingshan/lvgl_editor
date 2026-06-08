@@ -19,6 +19,8 @@ void lv_example_bar(void)
     static lv_style_t style_bar;
     static lv_style_t style_bar_ind;
 
+    static lv_subject_t subject_value;
+
     static bool inited = false;
 
     if (!inited) {
@@ -35,6 +37,9 @@ void lv_example_bar(void)
         lv_style_set_bg_color(&style_bar_ind, lv_color_hex(0x3b82f6));
         lv_style_set_radius(&style_bar_ind, 6);
 
+        lv_subject_init_int(&subject_value, 50);
+        lv_subject_set_min_value_int(&subject_value, 0);
+        lv_subject_set_max_value_int(&subject_value, 100);
         inited = true;
     }
 

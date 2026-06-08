@@ -18,6 +18,8 @@ void lv_example_arc(void)
     static lv_style_t style_arc_ind;
     static lv_style_t style_arc_knob;
 
+    static lv_subject_t subject_value;
+
     static bool inited = false;
 
     if (!inited) {
@@ -38,6 +40,9 @@ void lv_example_arc(void)
         lv_style_set_shadow_opa(&style_arc_knob, (255 * 50 / 100));
         lv_style_set_shadow_width(&style_arc_knob, 10);
 
+        lv_subject_init_int(&subject_value, 50);
+        lv_subject_set_min_value_int(&subject_value, 0);
+        lv_subject_set_max_value_int(&subject_value, 100);
         inited = true;
     }
 

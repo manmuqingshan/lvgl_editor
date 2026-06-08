@@ -18,6 +18,8 @@ void lv_example_label(void)
 {
     static lv_style_t style_box;
 
+    static lv_subject_t subject_value;
+
     static bool inited = false;
 
     if (!inited) {
@@ -29,6 +31,9 @@ void lv_example_label(void)
         lv_style_set_text_color(&style_box, lv_color_hex(0xe5e7eb));
         lv_style_set_width(&style_box, 260);
 
+        lv_subject_init_int(&subject_value, 50);
+        lv_subject_set_min_value_int(&subject_value, 0);
+        lv_subject_set_max_value_int(&subject_value, 100);
         inited = true;
     }
 

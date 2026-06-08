@@ -28,7 +28,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # Subjects declared at the project level (one source of truth) so each example
 # can pull the names/types/initial-values it actually references.
-GLOBALS_XML_PATH = REPO_ROOT / "examples" / "xml_project" / "globals.xml"
+GLOBALS_XML_PATH = REPO_ROOT / "examples" / "globals.xml"
 
 # Fixed buffer size used for string subjects when promoted into example-local
 # inits. The project's gen header uses `UI_SUBJECT_STRING_LENGTH = 256`; the
@@ -458,7 +458,7 @@ def map_xml_comments(source: str, path: Path) -> str:
 # Local subject inits
 # =============================================================================
 #
-# Subjects are declared once in `examples/xml_project/globals.xml`. The
+# Subjects are declared once in `examples/globals.xml`. The
 # generator emits `&subject_X` references but assumes those subjects are
 # externs defined by project init code. For standalone example files we
 # inject the decl + init for each referenced subject so a reader can

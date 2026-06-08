@@ -20,6 +20,8 @@ void lv_example_obj(void)
     static lv_style_t style_row;
     static lv_style_t style_scrollbar;
 
+    static lv_subject_t subject_checked;
+
     static bool inited = false;
 
     if (!inited) {
@@ -49,6 +51,7 @@ void lv_example_obj(void)
         lv_style_set_width(&style_scrollbar, 6);
         lv_style_set_pad_ver(&style_scrollbar, 14);
 
+        lv_subject_init_int(&subject_checked, 0);
         inited = true;
     }
 

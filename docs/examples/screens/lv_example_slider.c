@@ -22,6 +22,8 @@ void lv_example_slider(void)
     static lv_style_t style_bar_ind;
     static lv_style_t style_bar_knob;
 
+    static lv_subject_t subject_value;
+
     static bool inited = false;
 
     if (!inited) {
@@ -47,6 +49,9 @@ void lv_example_slider(void)
         lv_style_set_shadow_offset_y(&style_bar_knob, 4);
         lv_style_set_shadow_opa(&style_bar_knob, (255 * 30 / 100));
 
+        lv_subject_init_int(&subject_value, 50);
+        lv_subject_set_min_value_int(&subject_value, 0);
+        lv_subject_set_max_value_int(&subject_value, 100);
         inited = true;
     }
 

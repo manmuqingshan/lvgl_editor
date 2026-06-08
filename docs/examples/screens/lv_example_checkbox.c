@@ -16,6 +16,8 @@ void lv_example_checkbox(void)
 {
     static lv_style_t style_tick_checked;
 
+    static lv_subject_t subject_checked;
+
     static bool inited = false;
 
     if (!inited) {
@@ -23,6 +25,7 @@ void lv_example_checkbox(void)
         lv_style_set_bg_color(&style_tick_checked, lv_color_hex(0x16a34a));
         lv_style_set_border_color(&style_tick_checked, lv_color_hex(0x16a34a));
 
+        lv_subject_init_int(&subject_checked, 0);
         inited = true;
     }
 

@@ -20,6 +20,8 @@ void lv_example_dropdown(void)
     static lv_style_t style_dd_list_selected;
     static lv_style_t style_dd_list_pressed;
 
+    static lv_subject_t subject_index;
+
     static bool inited = false;
 
     if (!inited) {
@@ -44,6 +46,7 @@ void lv_example_dropdown(void)
         lv_style_set_bg_color(&style_dd_list_pressed, lv_color_hex(0xcc98f1));
         lv_style_set_text_color(&style_dd_list_pressed, lv_color_hex(0xffffff));
 
+        lv_subject_init_int(&subject_index, 0);
         inited = true;
     }
 

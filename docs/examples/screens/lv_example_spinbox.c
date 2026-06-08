@@ -15,7 +15,11 @@
  */
 void lv_example_spinbox(void)
 {
+    LV_FONT_DECLARE(font_large);
+
     static lv_style_t style_sb;
+
+    static lv_subject_t subject_value;
 
     static bool inited = false;
 
@@ -26,8 +30,11 @@ void lv_example_spinbox(void)
         lv_style_set_text_color(&style_sb, lv_color_hex(0xf9fafb));
         lv_style_set_radius(&style_sb, 8);
         lv_style_set_pad_all(&style_sb, 10);
-        lv_style_set_text_font(&style_sb, font_large);
+        lv_style_set_text_font(&style_sb, &font_large);
 
+        lv_subject_init_int(&subject_value, 50);
+        lv_subject_set_min_value_int(&subject_value, 0);
+        lv_subject_set_max_value_int(&subject_value, 100);
         inited = true;
     }
 

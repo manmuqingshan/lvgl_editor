@@ -19,6 +19,8 @@ void lv_example_switch(void)
     static lv_style_t style_sw_on;
     static lv_style_t style_knob;
 
+    static lv_subject_t subject_checked;
+
     static bool inited = false;
 
     if (!inited) {
@@ -32,6 +34,7 @@ void lv_example_switch(void)
         lv_style_init(&style_knob);
         lv_style_set_bg_color(&style_knob, lv_color_hex(0xffffff));
 
+        lv_subject_init_int(&subject_checked, 0);
         inited = true;
     }
 

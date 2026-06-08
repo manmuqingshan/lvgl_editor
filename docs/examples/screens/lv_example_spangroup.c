@@ -15,6 +15,8 @@
  */
 void lv_example_spangroup(void)
 {
+    LV_FONT_DECLARE(font_large);
+
     static lv_style_t style_normal;
     static lv_style_t style_accent;
     static lv_style_t style_big;
@@ -31,7 +33,7 @@ void lv_example_spangroup(void)
 
         lv_style_init(&style_big);
         lv_style_set_text_color(&style_big, lv_color_hex(0xf59e0b));
-        lv_style_set_text_font(&style_big, font_large);
+        lv_style_set_text_font(&style_big, &font_large);
 
         lv_style_init(&style_panel);
         lv_style_set_bg_color(&style_panel, lv_color_hex(0x0f172a));
