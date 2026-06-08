@@ -10,7 +10,6 @@ export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
 echo Clone the Emscripten port
 echo -------------------------
 
-
 if true; then
     rm -rf emscripten_builder
     git clone https://github.com/lvgl/lv_sim_emscripten.git emscripten_builder
@@ -31,8 +30,10 @@ echo ---------------------
 # Replace the lvgl examples with the lvgl_editor exmamples so that emscripten will build them
 rm -r $LVGL_PATH/examples
 cp -r $PROJ_PATH/docs/examples $LVGL_PATH
+
+cd $STARTER_PATH
 EXAMPLE_LIST_C=$EMSCRIPTEN_BUILDER_PATH/examplelist.c
-$STARTER_PATH/lvgl_editor/docs/scripts/genexamplelist.sh > $EXAMPLE_LIST_C
+./lvgl_editor/docs/scripts/genexamplelist.sh > $EXAMPLE_LIST_C
 cat $EXAMPLE_LIST_C
 
 echo Generate lv_conf
