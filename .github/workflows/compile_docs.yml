@@ -95,10 +95,11 @@ jobs:
           rm -rf /tmp/pro-docs-latest/latest
           rm -rf /tmp/pro-docs-latest/xml/latest
 
-          mkdir -p /tmp/pro-docs-latest/latest
+          mkdir -p /tmp/pro-docs-latest/latest/src
           mkdir -p /tmp/pro-docs-latest/xml/latest
 
-          cp -r docs/. /tmp/pro-docs-latest/latest/
+          cp -r docs/. /tmp/pro-docs-latest/latest/src
+          mv -r /tmp/pro-docs-latest/latest/src/built_lv_examples /tmp/pro-docs-latest/latest/built_lv_examples
           cp -r /tmp/xml/. /tmp/pro-docs-latest/xml/latest
 
           cd /tmp/pro-docs-latest
