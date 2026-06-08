@@ -27,11 +27,10 @@
 	<images>
 		<!-- Small 48x48 logo reused by the image-based examples. -->
 		<data name="img_logo" src_path="images/img_logo.png" color_format="argb8888" />
-		<!-- Animated GIF used by the lv_gif example, loaded as a file. -->
-		<file name="img_bulb" src_path="images/bulb.gif" />
-		<file name="imgbtn_left" src_path="images/imgbtn_left.png" />
-		<file name="imgbtn_mid" src_path="images/imgbtn_mid.png" />
-		<file name="imgbtn_right" src_path="images/imgbtn_right.png" />
+		<data name="imgbtn_left" src_path="images/imgbtn_left.png" color_format="argb8888"/>
+		<data name="imgbtn_mid" src_path="images/imgbtn_mid.png" color_format="argb8888"/>
+		<data name="imgbtn_right" src_path="images/imgbtn_right.png" color_format="argb8888"/>
+		<data name="img_bulb" src_path="images/bulb.gif" color_format="raw"/>
 	</images>
 
 	<fonts>
