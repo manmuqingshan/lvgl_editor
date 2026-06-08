@@ -100,10 +100,10 @@ jobs:
 
           cp -r docs/. /tmp/pro-docs-latest/latest/src
           mv /tmp/pro-docs-latest/latest/src/built_lv_examples /tmp/pro-docs-latest/latest/built_lv_examples
-          mv /tmp/pro-docs-latest/latest/src/examples /tmp/pro-docs-latest/latest/examples
           cp -r /tmp/xml/. /tmp/pro-docs-latest/xml/latest
 
 
+          rm -rf /tmp/pro-docs-latest/latest/src/examples
           rm -rf /tmp/pro-docs-latest/latest/src/scripts
 
           cd /tmp/pro-docs-latest
