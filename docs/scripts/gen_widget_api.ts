@@ -73,8 +73,17 @@ function parseXml(src: string): ElNode {
 			continue;
 		}
 
-		const gt = src.indexOf('>', i);
-		if (gt === -1) break;
+		// Find the '>' that ends this tag, skipping any inside quoted
+		// attribute values (help text may contain raw '<' / '>').
+		let gt = i + 1;
+		let quote = '';
+		for (; gt < src.length; gt++) {
+			const ch = src[gt];
+			if (quote) { if (ch === quote) quote = ''; }
+			else if (ch === '"' || ch === "'") quote = ch;
+			else if (ch === '>') break;
+		}
+		if (gt >= src.length) break;
 		const tag = src.slice(i + 1, gt).trim();
 		i = gt + 1;
 
@@ -180,6 +189,10 @@ function renderElement(widgetTag: string, e: ElNode): string {
 	if (e.attrs.type && e.attrs.type !== 'void') meta.push(`returns \`${e.attrs.type}\``);
 	if (meta.length) out += `_${meta.join(' · ')}_\n\n`;
 
+	// The element's own parts come before its attributes.
+	const parts = els(e, 'parts')[0];
+	if (parts) out += `**Parts**\n\n${partsTable(parts)}\n`;
+
 	const rows: string[][] = [];
 	for (const c of els(e)) {
 		if (c.name === 'arg') {
@@ -210,6 +223,18 @@ const INHERIT_NOTE =
 	'API of the [Base Widget (`lv_obj`)](./lv_obj). See ' +
 	'[API](../syntax/api) for how the `<api>` works.';
 
+/** Intro shown above every Parts table. */
+const PARTS_NOTE =
+	'Style parts of the widget with local style (e.g. `style_bg_color-knob="0xff0000"`)' +
+	' or with style sheets (e.g. `<style name="style_knob" selector="knob">`). ' +
+	'See [Styles](../syntax/styles) to learn more.';
+
+/** Render a `<parts>` block as a Part / Description table. */
+function partsTable(parts: ElNode): string {
+	const rows = els(parts, 'part').map((p) => [code(p.attrs.name), cell(p.attrs.help)]);
+	return table(['Part', 'Description'], rows);
+}
+
 function renderWidget(key: string, api: ElNode): string {
 	if (key === 'lv_obj') return renderBaseWidget(api);
 
@@ -227,6 +252,14 @@ function renderWidget(key: string, api: ElNode): string {
 	const consts = els(api, 'const');
 	const props = els(api, 'prop');
 	const elements = els(api, 'element');
+	const parts = els(api, 'parts')[0];
+
+	// Parts open the section, before any properties.
+	if (parts) {
+		out.push('### Parts\n');
+		out.push(`${PARTS_NOTE}\n`);
+		out.push(partsTable(parts));
+	}
 
 	if (!consts.length && !props.length && !elements.length) {
 		out.push(INHERIT_NOTE);
@@ -303,6 +336,14 @@ function renderBaseWidget(api: ElNode): string {
 	// lv_obj has only the lv_obj_flag enumdef, which the Flags section
 	// already documents — so no separate ## Enumerations section here.
 	out.push('## Properties\n');
+
+	const parts = els(api, 'parts')[0];
+	if (parts) {
+		out.push('### Parts\n');
+		out.push(`${PARTS_NOTE}\n`);
+		out.push(partsTable(parts));
+	}
+
 	out.push(`${API_NOTE}\n`);
 	out.push(table(['Property', 'Type', 'Description'], plain.flatMap(propRows)));
 
