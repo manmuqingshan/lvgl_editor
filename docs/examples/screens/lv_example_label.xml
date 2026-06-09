@@ -24,47 +24,25 @@
 	<view
 		flex_flow="column"
 		style_pad_row="12"
-		style_bg_color="0xfa6"
 		style_flex_cross_place="center"
 		style_flex_main_place="center"
 		style_flex_track_place="center"
-		style_grid_column_dsc_array="50 fr(1) 2fr content"
-		style_grid_row_dsc_array="100"
-		style_layout="grid"
 	>
 		<!-- 💡 The scrolling label's text is wider than its fixed width, so it loops. -->
-		<lv_button
-			style_grid_cell_column_pos="0"
-			style_grid_cell_row_pos="0"
-			style_grid_cell_x_align="stretch"
-			style_grid_cell_y_align="stretch"
-		>
-			<lv_label text="1" align="center" />
-		</lv_button>
-		<lv_button
-			style_grid_cell_column_pos="1"
-			style_grid_cell_row_pos="0"
-			style_grid_cell_x_align="stretch"
-			style_grid_cell_y_align="stretch"
-		>
-			<lv_label text="2" align="center" />
-		</lv_button>
-		<lv_button
-			style_grid_cell_column_pos="2"
-			style_grid_cell_row_pos="0"
-			style_grid_cell_x_align="stretch"
-			style_grid_cell_y_align="stretch"
-		>
-			<lv_label text="3" align="center" />
-		</lv_button>
-		<lv_button
-			width="150"
-			style_grid_cell_column_pos="3"
-			style_grid_cell_row_pos="0"
-			style_grid_cell_x_align="stretch"
-			style_grid_cell_y_align="stretch"
-		>
-			<lv_label text="4" align="center" />
-		</lv_button>
+
+		<!-- Per-word recoloring -->
+		<lv_label recolor="true" text="Status: #16a34a OK# / #dc2626 ERROR#">
+			<style name="style_box" />
+		</lv_label>
+
+		<!-- Fixed width + circular scroll for overflow -->
+		<lv_label width="200" long_mode="scroll_circular" text="This text is too long to fit so it scrolls around.">
+			<style name="style_box" />
+		</lv_label>
+
+		<!-- Live value bound to a subject -->
+		<lv_label bind_text="subject_value" bind_text-fmt="Bound value: %d %%">
+			<style name="style_box" />
+		</lv_label>
 	</view>
 </screen>
