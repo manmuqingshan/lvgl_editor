@@ -2,7 +2,7 @@
  * @file lv_example_imagebutton.c
  */
 
-#include <examples_ed/lv_examples.h>
+#include "../lv_examples.h"
 
 /**
  * @title Image button
