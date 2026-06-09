@@ -39,6 +39,15 @@
 
 	<view>
 		<!-- Bound, normal mode, with an overlaid readout -->
+		<lv_label
+			align="left_mid"
+			y="-65"
+			x="20"
+			bind_text="subject_value"
+			bind_text-fmt="%d %%"
+			style_text_color="0x192e4f"
+		/>
+
 		<lv_slider
 			width="240"
 			height="#thickness"
@@ -51,7 +60,6 @@
 			<style name="style_bar" />
 			<style name="style_bar_ind" selector="indicator" />
 			<style name="style_bar_knob" selector="knob" />
-			<lv_label align="center" bind_text="subject_value" bind_text-fmt="%d %%" style_text_color="0x192e4f" />
 		</lv_slider>
 
 		<!-- Range: indicator spans start_value..value -->

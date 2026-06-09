@@ -28,8 +28,8 @@
 	<view
 		flex_flow="column"
 		style_pad_row="14"
-		style_pad_all="16"
 		style_flex_cross_place="center"
+		style_flex_main_place="center"
 		style_flex_track_place="center"
 	>
 		<!-- 💡 Tap the middle button: it keeps its checked colour until tapped again. -->

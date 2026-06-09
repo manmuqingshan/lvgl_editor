@@ -2,7 +2,7 @@
  * @file lv_example_imagebutton.c
  */
 
-#include "../lv_examples.h"
+#include <examples_ed/lv_examples.h>
 
 /**
  * @title Image button
@@ -15,6 +15,10 @@
  */
 void lv_example_imagebutton(void)
 {
+    LV_IMAGE_DECLARE(imgbtn_left);
+    LV_IMAGE_DECLARE(imgbtn_mid);
+    LV_IMAGE_DECLARE(imgbtn_right);
+
     static lv_style_t style_pressed;
 
     static bool inited = false;
@@ -28,6 +32,19 @@ void lv_example_imagebutton(void)
         inited = true;
     }
 
-    lv_screen_active();
+    lv_obj_t * screen = lv_screen_active();
+
+    lv_obj_t * lv_imagebutton_0 = lv_imagebutton_create(screen);
+    lv_obj_set_width(lv_imagebutton_0, 160);
+    lv_obj_set_align(lv_imagebutton_0, LV_ALIGN_CENTER);
+    lv_obj_add_style(lv_imagebutton_0, &style_pressed, LV_STATE_PRESSED);
+    lv_imagebutton_set_src_left(lv_imagebutton_0, LV_IMAGEBUTTON_STATE_RELEASED, &imgbtn_left);
+    lv_imagebutton_set_src_mid(lv_imagebutton_0, LV_IMAGEBUTTON_STATE_RELEASED, &imgbtn_mid);
+    lv_imagebutton_set_src_right(lv_imagebutton_0, LV_IMAGEBUTTON_STATE_RELEASED, &imgbtn_right);
+    lv_obj_t * lv_label_0 = lv_label_create(lv_imagebutton_0);
+    lv_obj_set_align(lv_label_0, LV_ALIGN_CENTER);
+    lv_label_set_text(lv_label_0, "Press");
+    lv_obj_set_style_text_color(lv_label_0, lv_color_hex(0xffffff), 0);
+    lv_obj_set_y(lv_label_0, -3);
 }
 

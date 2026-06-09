@@ -9,7 +9,15 @@
 -->
 <screen>
 	<styles>
-		<style name="style_chart" bg_color="0x0f172a" bg_opa="100%" radius="8" pad_all="10" line_color="0x334155" />
+		<style
+			name="style_chart"
+			bg_color="0x0f172a"
+			bg_opa="100%"
+			radius="8"
+			pad_all="10"
+			line_color="0x334155"
+			border_width="0"
+		/>
 		<style name="style_chart_cursor" line_dash_gap="10" line_dash_width="5" />
 	</styles>
 

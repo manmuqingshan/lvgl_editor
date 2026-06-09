@@ -44,16 +44,14 @@ void lv_example_keyboard(void)
     }
 
     lv_obj_t * screen = lv_screen_active();
-    lv_obj_set_flex_flow(screen, LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_style_pad_row(screen, 8, 0);
-    lv_obj_set_style_pad_all(screen, 8, 0);
-    lv_obj_set_style_flex_cross_place(screen, LV_FLEX_ALIGN_CENTER, 0);
 
     /* 💡 Tap keys — they type into the field above and show a popover preview. */
     lv_obj_t * ta_input = lv_textarea_create(screen);
     lv_obj_set_width(ta_input, 300);
     lv_textarea_set_one_line(ta_input, true);
     lv_textarea_set_placeholder_text(ta_input, "Tap the keyboard ...");
+    lv_obj_set_align(ta_input, LV_ALIGN_TOP_MID);
+    lv_obj_set_y(ta_input, 30);
     lv_obj_add_style(ta_input, &style_bg, 0);
 
     lv_obj_t * lv_keyboard_0 = lv_keyboard_create(screen);
@@ -61,6 +59,7 @@ void lv_example_keyboard(void)
     lv_keyboard_set_mode(lv_keyboard_0, LV_KEYBOARD_MODE_TEXT_LOWER);
     lv_keyboard_set_popovers(lv_keyboard_0, true);
     lv_keyboard_set_textarea(lv_keyboard_0, ta_input);
+    lv_obj_set_align(lv_keyboard_0, LV_ALIGN_BOTTOM_MID);
     lv_obj_add_style(lv_keyboard_0, &style_bg, 0);
     lv_obj_add_style(lv_keyboard_0, &style_btn_normal, LV_PART_ITEMS);
     lv_obj_add_style(lv_keyboard_0, &style_btn_checked, LV_PART_ITEMS | LV_STATE_CHECKED);

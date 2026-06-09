@@ -40,31 +40,26 @@ void lv_example_label(void)
     lv_obj_t * screen = lv_screen_active();
     lv_obj_set_flex_flow(screen, LV_FLEX_FLOW_COLUMN);
     lv_obj_set_style_pad_row(screen, 12, 0);
-    lv_obj_set_style_pad_all(screen, 16, 0);
     lv_obj_set_style_flex_cross_place(screen, LV_FLEX_ALIGN_CENTER, 0);
-
-    /* 💡 The scrolling label's text is wider than its fixed width, so it loops. */
-    lv_obj_t * lv_label_0 = lv_label_create(screen);
-    lv_obj_set_width(lv_label_0, lv_pct(100));
-    lv_obj_set_style_text_align(lv_label_0, LV_TEXT_ALIGN_CENTER, 0);
-    lv_label_set_text(lv_label_0, "Label: features");
+    lv_obj_set_style_flex_main_place(screen, LV_FLEX_ALIGN_CENTER, 0);
+    lv_obj_set_style_flex_track_place(screen, LV_FLEX_ALIGN_CENTER, 0);
 
     /* Per-word recoloring */
-    lv_obj_t * lv_label_1 = lv_label_create(screen);
-    lv_label_set_recolor(lv_label_1, true);
-    lv_label_set_text(lv_label_1, "Status: #16a34a OK# / #dc2626 ERROR#");
-    lv_obj_add_style(lv_label_1, &style_box, 0);
+    lv_obj_t * lv_label_0 = lv_label_create(screen);
+    lv_label_set_recolor(lv_label_0, true);
+    lv_label_set_text(lv_label_0, "Status: #16a34a OK# / #dc2626 ERROR#");
+    lv_obj_add_style(lv_label_0, &style_box, 0);
 
     /* Fixed width + circular scroll for overflow */
-    lv_obj_t * lv_label_2 = lv_label_create(screen);
-    lv_obj_set_width(lv_label_2, 200);
-    lv_label_set_long_mode(lv_label_2, LV_LABEL_LONG_MODE_SCROLL_CIRCULAR);
-    lv_label_set_text(lv_label_2, "This text is too long to fit so it scrolls around.");
-    lv_obj_add_style(lv_label_2, &style_box, 0);
+    lv_obj_t * lv_label_1 = lv_label_create(screen);
+    lv_obj_set_width(lv_label_1, 200);
+    lv_label_set_long_mode(lv_label_1, LV_LABEL_LONG_MODE_SCROLL_CIRCULAR);
+    lv_label_set_text(lv_label_1, "This text is too long to fit so it scrolls around.");
+    lv_obj_add_style(lv_label_1, &style_box, 0);
 
     /* Live value bound to a subject */
-    lv_obj_t * lv_label_3 = lv_label_create(screen);
-    lv_label_bind_text(lv_label_3, &subject_value, "Bound value: %d %%");
-    lv_obj_add_style(lv_label_3, &style_box, 0);
+    lv_obj_t * lv_label_2 = lv_label_create(screen);
+    lv_label_bind_text(lv_label_2, &subject_value, "Bound value: %d %%");
+    lv_obj_add_style(lv_label_2, &style_box, 0);
 }
 

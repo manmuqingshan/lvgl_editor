@@ -893,6 +893,52 @@ def declare_and_ref_fonts(source: str, path: Path) -> str:
 
 
 # =============================================================================
+# Strip the `_data` suffix from generated image/font asset files
+# =============================================================================
+#
+# The image/font converter the editor drives emits each registered asset as
+# `<name>_data.c`, with its descriptor (`<name>_data`) and — for images — its
+# pixel array (`<name>_data_map`) carrying the same `_data` suffix. The
+# examples reference the clean `globals.xml` name (`&img_logo`, `&font_large`),
+# so those `_data` symbols don't link. For every image/font registered in
+# `globals.xml` this renames the file to `<name>.c` and rewrites the lowercase
+# `<name>_data` token to `<name>` throughout. The uppercase
+# `LV_ATTRIBUTE_*_DATA` macro is deliberately left alone — it's an unused
+# define and a case-sensitive match never touches it.
+#
+# Unlike the `(source, path) -> str` transforms above, this operates on whole
+# files (it renames them), so it runs as its own pass in `main()` rather than
+# through the per-file `TRANSFORMATIONS` pipeline.
+
+
+def _globals_asset_names() -> list[str]:
+    """Every image + font name registered in `globals.xml` (images first)."""
+    return list(_load_globals_images()) + _load_globals_fonts()
+
+
+def strip_data_suffix_from_assets(examples_dir: Path) -> list[Path]:
+    """Rename `<name>_data.c` → `<name>.c` and drop the `_data` token from its
+    symbols for each image/font in `globals.xml`. Returns files written.
+
+    Idempotent: once renamed, no `<name>_data.c` remains to match, so re-runs
+    are no-ops.
+    """
+    written: list[Path] = []
+    for name in _globals_asset_names():
+        token = f"{name}_data"
+        for data_file in examples_dir.rglob(f"{token}.c"):
+            # Leading `\b` anchors the token start; no trailing anchor so the
+            # `<name>_data_map` array becomes `<name>_map` too.
+            new_text = re.sub(rf"\b{re.escape(token)}", name, data_file.read_text())
+            clean_file = data_file.with_name(f"{name}.c")
+            clean_file.write_text(new_text)
+            if clean_file != data_file:
+                data_file.unlink()
+            written.append(clean_file)
+    return written
+
+
+# =============================================================================
 # Coalesce the declaration block
 # =============================================================================
 #
@@ -1187,6 +1233,10 @@ def main(argv: list[str]) -> int:
             print(f"updated: {path.relative_to(REPO_ROOT)}")
 
     print(f"\n{changed} of {len(targets)} files changed.")
+
+    for asset in strip_data_suffix_from_assets(examples_dir):
+        print(f"asset: {asset.relative_to(REPO_ROOT)}")
+
     return 0
 
 

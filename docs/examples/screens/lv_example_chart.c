@@ -27,6 +27,7 @@ void lv_example_chart(void)
         lv_style_set_radius(&style_chart, 8);
         lv_style_set_pad_all(&style_chart, 10);
         lv_style_set_line_color(&style_chart, lv_color_hex(0x334155));
+        lv_style_set_border_width(&style_chart, 0);
 
         lv_style_init(&style_chart_cursor);
         lv_style_set_line_dash_gap(&style_chart_cursor, 10);

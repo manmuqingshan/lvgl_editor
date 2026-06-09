@@ -58,6 +58,13 @@ void lv_example_slider(void)
     lv_obj_t * screen = lv_screen_active();
 
     /* Bound, normal mode, with an overlaid readout */
+    lv_obj_t * lv_label_0 = lv_label_create(screen);
+    lv_obj_set_align(lv_label_0, LV_ALIGN_LEFT_MID);
+    lv_obj_set_y(lv_label_0, -65);
+    lv_obj_set_x(lv_label_0, 20);
+    lv_label_bind_text(lv_label_0, &subject_value, "%d %%");
+    lv_obj_set_style_text_color(lv_label_0, lv_color_hex(0x192e4f), 0);
+
     lv_obj_t * lv_slider_0 = lv_slider_create(screen);
     lv_obj_set_size(lv_slider_0, 240, THICKNESS);
     lv_slider_bind_value(lv_slider_0, &subject_value);
@@ -68,10 +75,6 @@ void lv_example_slider(void)
     lv_obj_add_style(lv_slider_0, &style_bar, 0);
     lv_obj_add_style(lv_slider_0, &style_bar_ind, LV_PART_INDICATOR);
     lv_obj_add_style(lv_slider_0, &style_bar_knob, LV_PART_KNOB);
-    lv_obj_t * lv_label_0 = lv_label_create(lv_slider_0);
-    lv_obj_set_align(lv_label_0, LV_ALIGN_CENTER);
-    lv_label_bind_text(lv_label_0, &subject_value, "%d %%");
-    lv_obj_set_style_text_color(lv_label_0, lv_color_hex(0x192e4f), 0);
 
     /* Range: indicator spans start_value..value */
     lv_obj_t * lv_slider_1 = lv_slider_create(screen);

@@ -41,6 +41,7 @@ void lv_example_spinner(void)
     lv_obj_set_flex_flow(screen, LV_FLEX_FLOW_ROW);
     lv_obj_set_style_flex_main_place(screen, LV_FLEX_ALIGN_SPACE_EVENLY, 0);
     lv_obj_set_style_flex_cross_place(screen, LV_FLEX_ALIGN_CENTER, 0);
+    lv_obj_set_style_flex_track_place(screen, LV_FLEX_ALIGN_CENTER, 0);
 
     /* Slow, long sweep */
     lv_obj_t * lv_spinner_0 = lv_spinner_create(screen);

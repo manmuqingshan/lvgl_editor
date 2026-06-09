@@ -13,7 +13,12 @@
 		<style name="style_ind2" arc_color="0xf59e0b" arc_width="12" pad_all="-2" />
 	</styles>
 
-	<view flex_flow="row" style_flex_main_place="space_evenly" style_flex_cross_place="center">
+	<view
+		flex_flow="row"
+		style_flex_main_place="space_evenly"
+		style_flex_cross_place="center"
+		style_flex_track_place="center"
+	>
 		<!-- Slow, long sweep -->
 		<lv_spinner width="80" height="80" anim_duration="2000" arc_sweep="270">
 			<style name="style_track" />

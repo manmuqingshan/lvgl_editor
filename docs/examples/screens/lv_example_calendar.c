@@ -30,14 +30,13 @@ void lv_example_calendar(void)
     }
 
     lv_obj_t * screen = lv_screen_active();
-    lv_obj_set_style_flex_cross_place(screen, LV_FLEX_ALIGN_CENTER, 0);
-    lv_obj_set_style_pad_all(screen, 10, 0);
 
     /* 💡 Use the header dropdowns to change month or year. */
     lv_obj_t * lv_calendar_0 = lv_calendar_create(screen);
-    lv_obj_set_size(lv_calendar_0, 260, 210);
+    lv_obj_set_size(lv_calendar_0, 260, 280);
     lv_calendar_set_shown_year(lv_calendar_0, 2026);
     lv_calendar_set_shown_month(lv_calendar_0, 5);
+    lv_obj_set_align(lv_calendar_0, LV_ALIGN_CENTER);
     lv_calendar_set_today_year(lv_calendar_0, 2026);
     lv_calendar_set_today_month(lv_calendar_0, 5);
     lv_calendar_set_today_day(lv_calendar_0, 17);
